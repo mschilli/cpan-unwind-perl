@@ -105,18 +105,17 @@ DESCRIPTION
         schedule can be made due to circular dependencies.
 
   Caching
-        To avoid costly downloads, "CPAN::Unwind" will cache dependencies in
-        a Cache::FileCache cache, where they are stored indefinitely.
-        Running it the second time on a module will speed up processing
-        significantly.
+    To avoid costly downloads, "CPAN::Unwind" will cache dependencies in a
+    Cache::FileCache cache, where they are stored indefinitely. Running it
+    the second time on a module will speed up processing significantly.
 
   Turnkey Scripts
-        "CPAN::Unwind" comes with a ready-to-use script "cpan-unwind", which
-        gets installed in perl's bin path. It is ready to use, just call
+    "CPAN::Unwind" comes with a ready-to-use script "cpan-unwind", which
+    gets installed in perl's bin path. It is ready to use, just call
 
-            $ cpan-unwind Log::Log4perl
+        $ cpan-unwind Log::Log4perl
 
-        to see which modules "Log::Log4perl" depends on.
+    to see which modules "Log::Log4perl" depends on.
 
     "CPAN::Unwind" requires a valid CPAN configuration.
 

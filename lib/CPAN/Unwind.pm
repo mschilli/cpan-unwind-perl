@@ -460,6 +460,8 @@ Returns an installation schedule, a list of module names
 in the correct order without dependency conflicts. Returns C<undef>
 if no schedule can be made due to circular dependencies.
 
+=back
+
 =head2 Caching
 
 To avoid costly downloads, C<CPAN::Unwind> will cache dependencies

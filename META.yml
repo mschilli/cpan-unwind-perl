@@ -18,4 +18,4 @@ requires:
     Storable:                      0
 
 distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.21
+generated_by: ExtUtils::MakeMaker version 6.17
