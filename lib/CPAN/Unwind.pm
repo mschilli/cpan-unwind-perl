@@ -479,8 +479,6 @@ call
 
 to see which modules C<Log::Log4perl> depends on.
 
-=back
-
 C<CPAN::Unwind> requires a valid CPAN configuration.
 
 =head1 EXAMPLES
