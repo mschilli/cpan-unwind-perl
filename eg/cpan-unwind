@@ -50,9 +50,13 @@ This will obviously work only if there are no circular dependencies.
 
 =head1 EXAMPELS
 
-    $ cpan-unwind Log::Log4perl
+    $ cpan-unwind Net::Amazon
+    Carp Compress::Zlib Data::Dumper Fcntl File::Basename File::Path 
+    File::Spec HTML::Tagset IO::Socket MIME::Base64 Socket Test::Harness 
+    Test::More Test::Simple Time::HiRes URI XML::NamespaceSupport 
+    Digest::base File::Temp HTML::Parser Log::Log4perl Net::FTP 
+    XML::SAX XML::Simple Digest::MD5 LWP::UserAgent Net::Amazon
     
-
 =head1 LEGALESE
 
 Copyright 2005 by Mike Schilli, all rights reserved.
