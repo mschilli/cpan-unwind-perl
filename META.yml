@@ -5,6 +5,17 @@ version:      0.02
 version_from: lib/CPAN/Unwind.pm
 installdirs:  site
 requires:
+    Archive::Tar:                  0
+    Cache::Cache:                  0
+    Cache::FileCache:              0
+    CPAN:                          0
+    Data::Dumper:                  0
+    File::Temp:                    0
+    Log::Log4perl:                 0
+    LWP::Simple:                   0
+    Module::Depends::Intrusive:    0
+    Pod::Usage:                    0
+    Storable:                      0
 
 distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.17
+generated_by: ExtUtils::MakeMaker version 6.21
