@@ -28,7 +28,7 @@ my $agent = CPAN::Unwind->new(
 my $resp = $agent->lookup("Acme::Prereq::A");
 die $resp->message() unless $resp->is_success();
     
-my $deps = $resp->dependend_versions();
+my $deps = $resp->dependent_versions();
     
 ok(exists $deps->{"Acme::Prereq::B"}, "Acme::Prereq::A dependency");
 

@@ -13,7 +13,7 @@ SYNOPSIS
         my $resp = $agent->lookup("Log::Log4perl");
         die $resp->message() unless $resp->is_success();
     
-        my $deps = $resp->dependend_versions();
+        my $deps = $resp->dependent_versions();
     
         for my $module (keys %$deps) {
             printf "%30s: %s\n", $module, $deps->{$module};
@@ -40,15 +40,16 @@ SYNOPSIS
 
 DESCRIPTION
     CPAN::Unwind recursively determines dependencies of CPAN modules. It
-    fetches distribution tarballs from CPAN, unpacks them, and runs
-    Module::Depends::Intrusive on them.
+    fetches distribution tarballs from CPAN, unpacks them, and runs the
+    Module::Depends::Intrusive manpage on them.
 
-    SECURITY NOTE: CPAN::Unwind runs all Makefile.PL files (via
+    SECURITY NOTE: the CPAN::Unwind manpage runs all Makefile.PL files (via
     "Module::Depends::Intrusive") of modules it finds dependencies on. If
     you are concerned that any module in the dependency tree on CPAN isn't
     trustworthy, don't use it.
 
   METHODS
+
     CPAN::Unwind supports the following methods:
 
     "my $agent = CPAN::Unwind->new();"
@@ -56,8 +57,9 @@ DESCRIPTION
 
     "$resp = $agent->lookup_single($module_name)"
         Goes to CPAN and fetches the tarball containing the module specified
-        in $module_name. After unpacking the tarball, it will use
-        Module::Depends::Intrusive to determine the modules it depends on.
+        in "$module_name". After unpacking the tarball, it will use the
+        Module::Depends::Intrusive manpage to determine the modules it
+        depends on.
 
         Returns a "CPAN::Unwind::Response" object.
 
@@ -75,9 +77,9 @@ DESCRIPTION
         Returns a response's error message in case "is_success()" returned a
         false value.
 
-    "$resp->dependend_versions()"
+    "$resp->dependent_versions()"
         Returns a ref to a hash, containing a mapping between names of
-        dependend modules and their version numbers:
+        dependent modules and their version numbers:
 
             { "Test::More"  =>  0.51,
               "List::Utils" =>  0.38,
@@ -85,10 +87,10 @@ DESCRIPTION
             }
 
     "$resp->missing()"
-        Similar to "dependend_versions()", but only modules that are
+        Similar to "dependent_versions()", but only modules that are
         currently *not* installed are returned.
 
-    "$resp->dependends()"
+    "$resp->dependents()"
         Returns a ref to a hash, mapping module names to their dependencies.
 
             { "Net::Amazon"  =>  ["Log::Log4perl", "XML::Simple"],

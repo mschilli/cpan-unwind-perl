@@ -1,5 +1,11 @@
 ######################################################################
 Revision history for Perl extension CPAN::Unwind
 
+0.02  2005/03/15
+      (ms) Changed all references to the misspelled 'dependend' to 
+           'dependent'. Please note that this also affects the API 
+           (->dependent_versions()). Thanks to Adam Kennedy 
+           <adamk@cpan.org>.
+
 0.01  2005/03/13
       (ms) Where it all began.

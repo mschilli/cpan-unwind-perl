@@ -14,7 +14,7 @@ use strict;
     my $resp = $agent->lookup("Log::Log4perl");
     die $resp->message() unless $resp->is_success();
     
-    my $deps = $resp->dependend_versions();
+    my $deps = $resp->dependent_versions();
     
     for my $module (keys %$deps) {
         printf "%30s: %s\n", $module, $deps->{$module};
