@@ -9,8 +9,11 @@ my  $VERSION = "0.01";
 use Pod::Usage;
 use Log::Log4perl qw(:easy);
 use CPAN::Unwind;
+use Getopt::Std;
 
-Log::Log4perl->easy_init($ERROR);
+getopts("v", \my %opts);
+
+Log::Log4perl->easy_init($opts{v} ? $DEBUG : $ERROR);
 
 pod2usage("No module given") unless @ARGV;
 

@@ -36,7 +36,6 @@ sub new {
 
     $self->{cache} = Cache::FileCache->new(
                  {namespace           => "cpan_unwind",
-                  default_expires_in  => 3600*24*30,
                  }) unless $self->{cache};
 
     bless $self, $class;
@@ -461,9 +460,35 @@ Returns an installation schedule, a list of module names
 in the correct order without dependency conflicts. Returns C<undef>
 if no schedule can be made due to circular dependencies.
 
+=head2 Caching
+
+To avoid costly downloads, C<CPAN::Unwind> will cache dependencies
+in a Cache::FileCache cache, where they are stored indefinitely.
+Running it the second time on a module will speed up processing
+significantly.
+
+=head2 Turnkey Scripts
+
+C<CPAN::Unwind> comes with a ready-to-use script C<cpan-unwind>,
+which gets installed in perl's bin path. It is ready to use, just
+call
+
+    $ cpan-unwind Log::Log4perl
+
+to see which modules C<Log::Log4perl> depends on.
+
 =back
 
 C<CPAN::Unwind> requires a valid CPAN configuration.
+
+=head1 EXAMPLES
+
+    $ cpan-unwind Net::Amazon
+    Carp Compress::Zlib Data::Dumper Fcntl File::Basename File::Path 
+    File::Spec HTML::Tagset IO::Socket MIME::Base64 Socket Test::Harness 
+    Test::More Test::Simple Time::HiRes URI XML::NamespaceSupport 
+    Digest::base File::Temp HTML::Parser Log::Log4perl Net::FTP 
+    XML::SAX XML::Simple Digest::MD5 LWP::UserAgent Net::Amazon
 
 =head1 LEGALESE
 
