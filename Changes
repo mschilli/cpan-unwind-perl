@@ -8,6 +8,7 @@ TODO:
     
 0.03  (not yet released)
       (ms) Added cpan-download
+      (ms) made CPAN::Config optional
 
 0.02  2005/03/15
       (ms) Changed all references to the misspelled 'dependend' to 

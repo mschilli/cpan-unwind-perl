@@ -9,7 +9,6 @@ package CPAN::Unwind;
 use strict;
 use warnings;
 use CPAN qw();
-use CPAN::Config;
 use File::Temp qw(tempfile tempdir);
 use Log::Log4perl qw(:easy);
 use Log::Log4perl::Util;
@@ -47,7 +46,13 @@ sub tarball_url {
 ###########################################
     my($self, $mname) = @_;
 
-    my $cpan_url   = $CPAN::Config->{urllist}->[0];
+    my $cpan_url;
+
+    eval {
+        require CPAN::Config;
+        $cpan_url   = $CPAN::Config->{urllist}->[0];
+    };
+
     $cpan_url    ||= "http://search.cpan.org/CPAN";
     $cpan_url     .= "/modules/by-authors/id";
 
