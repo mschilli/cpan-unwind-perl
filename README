@@ -1,5 +1,5 @@
 ######################################################################
-    CPAN::Unwind 0.02
+    CPAN::Unwind 0.03
 ######################################################################
 
 NAME
@@ -40,24 +40,44 @@ SYNOPSIS
 
 DESCRIPTION
     CPAN::Unwind recursively determines dependencies of CPAN modules. It
-    fetches distribution tarballs from CPAN, unpacks them, and runs
-    Module::Depends::Intrusive on them.
+    fetches distribution tarballs from CPAN, unpacks them, and runs the
+    Module::Depends::Intrusive manpage on them.
 
-    SECURITY NOTE: CPAN::Unwind runs all Makefile.PL files (via
+    SECURITY NOTE: the CPAN::Unwind manpage runs all Makefile.PL files (via
     "Module::Depends::Intrusive") of modules it finds dependencies on. If
     you are concerned that any module in the dependency tree on CPAN isn't
     trustworthy, don't use it.
 
   METHODS
+
     CPAN::Unwind supports the following methods:
 
     "my $agent = CPAN::Unwind->new();"
-        Create a new dependency agent.
+        Create a new dependency agent. The following options are supported:
+
+        "cache"
+            Provide your own "Cache::Cache" object (see the Caching
+            manpage).
+
+        "add"
+            Provide additional dependencies that should be part of the
+            result:
+
+                CPAN::Unwind->new(add => 
+                    ["Foo", "Bar" => 0.17,
+                     ...
+                    ]);
+
+            indicates that "Foo" has a dependency on "Bar" 0.17, even if
+            it's not listed in "Foo"'s "Makefile.PL". This way, you can fix
+            broken Makefile.PL files of some CPAN modules, not listing their
+            dependencies correctly.
 
     "$resp = $agent->lookup_single($module_name)"
         Goes to CPAN and fetches the tarball containing the module specified
-        in $module_name. After unpacking the tarball, it will use
-        Module::Depends::Intrusive to determine the modules it depends on.
+        in "$module_name". After unpacking the tarball, it will use the
+        Module::Depends::Intrusive manpage to determine the modules it
+        depends on.
 
         Returns a "CPAN::Unwind::Response" object.
 
@@ -105,11 +125,13 @@ DESCRIPTION
         schedule can be made due to circular dependencies.
 
   Caching
+
     To avoid costly downloads, "CPAN::Unwind" will cache dependencies in a
     Cache::FileCache cache, where they are stored indefinitely. Running it
     the second time on a module will speed up processing significantly.
 
   Turnkey Scripts
+
     "CPAN::Unwind" comes with a ready-to-use script "cpan-unwind", which
     gets installed in perl's bin path. It is ready to use, just call
 

@@ -22,7 +22,7 @@ use Cache::FileCache;
 use Cache::Cache;
 use Cwd;
 
-our $VERSION = "0.02";
+our $VERSION = "0.03";
 our $TGZ     = "tar.tgz";
 
 ###########################################

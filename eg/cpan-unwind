@@ -51,7 +51,7 @@ given order, there won't be any unresolved dependencies.
 
 This will obviously work only if there are no circular dependencies.
 
-=head1 EXAMPELS
+=head1 EXAMPLES
 
     $ cpan-unwind Net::Amazon
     Carp Compress::Zlib Data::Dumper Fcntl File::Basename File::Path 

@@ -6,7 +6,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     'NAME'         => 'CPAN::Unwind',
     'VERSION_FROM' => 'lib/CPAN/Unwind.pm', # finds $VERSION
-    'EXE_FILES'         => ['eg/cpan-unwind'],
+    'EXE_FILES'         => [ qw(eg/cpan-unwind eg/cpan-download) ],
     'PREREQ_PM'    => {
         CPAN                       => 0,
         File::Temp                 => 0,

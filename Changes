@@ -6,6 +6,8 @@ TODO:
     * finish -add dependencies implementation    
     * yinst command lines
     
+0.03  (not yet released)
+      (ms) Added cpan-download
 
 0.02  2005/03/15
       (ms) Changed all references to the misspelled 'dependend' to 
