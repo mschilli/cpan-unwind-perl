@@ -11,25 +11,24 @@ use Log::Log4perl qw(:easy);
 use CPAN::Unwind;
 use Getopt::Std;
 
-getopts("v", \my %opts);
+getopts("vcu", \my %opts);
 
 Log::Log4perl->easy_init($opts{v} ? $DEBUG : $ERROR);
 
 pod2usage("No module given") unless @ARGV;
 
-for(@ARGV) {
-    my $agent = CPAN::Unwind->new();
+my $agent = CPAN::Unwind->new( 
+    core_include => $opts{c},
+    $opts{u} ? (cache => undef) : (),
+);
 
-    my $resp = $agent->lookup($_);
+my $resp = $agent->lookup(@ARGV);
 
-    LOGDIE $resp->message() unless $resp->is_success();
+LOGDIE $resp->message() unless $resp->is_success();
 
-    for($resp->schedule()) {
-        print "$_ ";
-    }
+for($resp->schedule()) {
+    print "$_\n";
 }
-
-print "\n";
 
 __END__
 
@@ -50,6 +49,26 @@ An 'install schedule' is an ordered list of modules. If installed in the
 given order, there won't be any unresolved dependencies.
 
 This will obviously work only if there are no circular dependencies.
+
+=head1 OPTIONS
+
+=over 4
+
+=item C<-u>
+
+Uncached. Disables the cache.
+
+=item C<-v>
+
+Verbose mode.
+
+=item C<-c>
+
+By default, cpan-unwind won't list modules that are listed on CPAN
+as part of a C<perl-*> release. If you want them listed as dependencies, 
+use the C<-c> (I<core>) option.
+
+=back
 
 =head1 EXAMPLES
 

@@ -1,14 +1,13 @@
 ######################################################################
 Revision history for Perl extension CPAN::Unwind
 
-TODO:
-    * don't list dependencies included in the perl core
-    * finish -add dependencies implementation    
-    * yinst command lines
-    
-0.03  (not yet released)
+0.03  (2005/03/26)
       (ms) Added cpan-download
       (ms) made CPAN::Config optional
+      (ms) Cache optional
+      (ms) Leave core modules out by default, core_include param set to true
+           (-c switch in cpan-unwind) gets them back in.
+      (ms) cpan-unwind supports multiple arguments
 
 0.02  2005/03/15
       (ms) Changed all references to the misspelled 'dependend' to 
