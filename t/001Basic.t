@@ -35,3 +35,22 @@ ok(exists $deps->{"Acme::Prereq::B"}, "Acme::Prereq::A dependency");
 eval { $resp->schedule() };
 
 like($@, qr/determine schedule/, "Circular dependency");
+
+#############################
+# Module without dependencies
+#############################
+$agent = CPAN::Unwind->new(
+    cache => $cache,
+);
+    
+$resp = $agent->lookup("Algorithm::Bucketizer");
+ok($resp->is_success, "Algorithm::Bucketizer");
+    
+$deps = $resp->dependent_versions();
+    
+is(join('', keys %$deps), "", "Algorithm::Bucketizer dependencies (none)");
+
+my @sched = $resp->schedule();
+
+is("@sched", "Algorithm::Bucketizer", "Algorithm::Bucketizer Schedule");
+
