@@ -1,0 +1,24 @@
+######################################################################
+    CPAN::Unwind 0.01
+######################################################################
+
+NAME
+    CPAN::Unwind - blah blah blah
+
+SYNOPSIS
+        use CPAN::Unwind;
+
+DESCRIPTION
+    CPAN::Unwind blah blah blah.
+
+EXAMPLES
+      $ perl -MCPAN::Unwind -le 'print $foo'
+
+LEGALESE
+    Copyright 2005 by Mike Schilli, all rights reserved. This program is
+    free software, you can redistribute it and/or modify it under the same
+    terms as Perl itself.
+
+AUTHOR
+    2005, Mike Schilli <cpan@perlmeister.com>
+
