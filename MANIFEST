@@ -1,6 +1,7 @@
 adm/podok
 Changes
 CPAN-Unwind-0.01/META.yml
+eg/cpan-unwind
 eg/schedule
 eg/synopsis
 lib/CPAN/Unwind.pm
