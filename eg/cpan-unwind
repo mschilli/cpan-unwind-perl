@@ -1,0 +1,64 @@
+#!/usr/local/bin/perl -w
+######################################################################
+# cpan-unwind -- 2005, Mike Schilli <mschilli@yahoo-inc.com>
+######################################################################
+use strict;
+
+my  $VERSION = "0.01";
+
+use Pod::Usage;
+use Log::Log4perl qw(:easy);
+use CPAN::Unwind;
+
+Log::Log4perl->easy_init($ERROR);
+
+pod2usage("No module given") unless @ARGV;
+
+for(@ARGV) {
+    my $agent = CPAN::Unwind->new();
+
+    my $resp = $agent->lookup($_);
+
+    LOGDIE $resp->message() unless $resp->is_success();
+
+    for($resp->schedule()) {
+        print "$_ ";
+    }
+}
+
+print "\n";
+
+__END__
+
+=head1 NAME
+
+    cpan-unwind - Create an installation schedule for a module on CPAN
+
+=head1 SYNOPSIS
+
+    cpan-unwind module_name
+
+=head1 DESCRIPTION
+
+C<cpan-unwind> determines a CPAN module's dependencies recursively. 
+It then unravels the list, and returns an 'install schedule'.
+
+An 'install schedule' is an ordered list of modules. If installed in the
+given order, there won't be any unresolved dependencies.
+
+This will obviously work only if there are no circular dependencies.
+
+=head1 EXAMPELS
+
+    $ cpan-unwind Log::Log4perl
+    
+
+=head1 LEGALESE
+
+Copyright 2005 by Mike Schilli, all rights reserved.
+This program is free software, you can redistribute it and/or
+modify it under the same terms as Perl itself.
+
+=head1 AUTHOR
+
+2005, Mike Schilli <mschilli@yahoo-inc.com>

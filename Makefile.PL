@@ -6,7 +6,20 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     'NAME'         => 'CPAN::Unwind',
     'VERSION_FROM' => 'lib/CPAN/Unwind.pm', # finds $VERSION
-    'PREREQ_PM'    => {}, # e.g., Module::Name => 1.1
+    'EXE_FILES'         => ['eg/cpan-unwind'],
+    'PREREQ_PM'    => {
+        CPAN                       => 0,
+        File::Temp                 => 0,
+        Pod::Usage                 => 0,
+        Log::Log4perl              => 0,
+        Data::Dumper               => 0,
+        LWP::Simple                => 0,
+        Module::Depends::Intrusive => 0,
+        Archive::Tar               => 0,
+        Storable                   => 0,
+        Cache::FileCache           => 0,
+        Cache::Cache               => 0,
+    }, # e.g., Module::Name => 1.1
     ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
       (ABSTRACT_FROM => 'lib/CPAN/Unwind.pm',
        AUTHOR     => 'Mike Schilli <cpan@perlmeister.com>') : ()),

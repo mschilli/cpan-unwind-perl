@@ -47,7 +47,9 @@ sub tarball_url {
 ###########################################
     my($self, $mname) = @_;
 
-    my $cpan_url = $CPAN::Config->{urllist}->[0] . "modules/by-authors/id";
+    my $cpan_url   = $CPAN::Config->{urllist}->[0];
+    $cpan_url    ||= "http://search.cpan.org/CPAN";
+    $cpan_url     .= "/modules/by-authors/id";
 
     my ($fh, $filename) = tempfile(CLEANUP => 1);
 

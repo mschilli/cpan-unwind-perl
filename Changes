@@ -6,6 +6,8 @@ Revision history for Perl extension CPAN::Unwind
            'dependent'. Please note that this also affects the API 
            (->dependent_versions()). Thanks to Adam Kennedy 
            <adamk@cpan.org>.
+      (ms) Added cpan-unwind script in eg, installed in bin.
+      (ms) Added module dependencies in Makefile.PL
 
 0.01  2005/03/13
       (ms) Where it all began.
