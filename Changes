@@ -1,6 +1,12 @@
 ######################################################################
 Revision history for Perl extension CPAN::Unwind
 
+TODO:
+    * don't list dependencies included in the perl core
+    * finish -add dependencies implementation    
+    * yinst command lines
+    
+
 0.02  2005/03/15
       (ms) Changed all references to the misspelled 'dependend' to 
            'dependent'. Please note that this also affects the API 
