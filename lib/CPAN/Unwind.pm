@@ -31,6 +31,7 @@ sub new {
     my($class, %options) = @_;
 
     my $self = {
+        add => [],
         %options,
     };
 
@@ -396,7 +397,29 @@ CPAN::Unwind supports the following methods:
 
 =item C<my $agent = CPAN::Unwind-E<gt>new();>
 
-Create a new dependency agent.
+Create a new dependency agent. The following options are supported:
+
+=over 4
+
+=item C<cache>
+
+Provide your own C<Cache::Cache> object (see L<Caching>).
+
+=item C<add>
+
+Provide additional dependencies that should be part of the result:
+
+    CPAN::Unwind->new(add => 
+        ["Foo", "Bar" => 0.17,
+         ...
+        ]);
+
+indicates that C<Foo> has a dependency on C<Bar> 0.17, even if it's 
+not listed in C<Foo>'s C<Makefile.PL>. This way, you can fix broken 
+Makefile.PL files of some CPAN modules, not listing their dependencies
+correctly.
+
+=back
 
 =item C<$resp = $agent-E<gt>lookup_single($module_name)>
 
