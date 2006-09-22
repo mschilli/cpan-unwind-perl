@@ -1,6 +1,10 @@
 ######################################################################
 Revision history for Perl extension CPAN::Unwind
 
+0.04  (2006/09/21)
+      (ms) Added Algorithm::Dependency::Ordered as a dependency, fixing
+           rt #21603, reported by Andreas König.
+
 0.03  (2005/03/26)
       (ms) Added cpan-download
       (ms) made CPAN::Config optional
