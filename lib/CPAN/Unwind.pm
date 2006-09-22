@@ -452,7 +452,7 @@ Create a new dependency agent. The following options are supported:
 
 =item C<cache>
 
-Provide your own C<Cache::Cache> object (see L<Caching>).
+Provide your own C<Cache::Cache> object (see I<Caching>).
 
 =item C<add>
 
