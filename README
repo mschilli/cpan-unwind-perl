@@ -55,7 +55,7 @@ DESCRIPTION
         Create a new dependency agent. The following options are supported:
 
         "cache"
-            Provide your own "Cache::Cache" object (see Caching).
+            Provide your own "Cache::Cache" object (see *Caching*).
 
         "add"
             Provide additional dependencies that should be part of the
