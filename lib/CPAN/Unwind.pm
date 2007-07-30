@@ -363,7 +363,7 @@ sub item_select {
 #######################################
     my($self, $item) = @_;
 
-    LOGCARP "Selecting $item";
+    DEBUG "Selecting $item";
 
     push @{$self->{selected}}, $item;
 }
