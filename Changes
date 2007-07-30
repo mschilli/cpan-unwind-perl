@@ -1,6 +1,10 @@
 ######################################################################
 Revision history for Perl extension CPAN::Unwind
 
+0.05  (2007/07/30)
+      (ms) Fixed test suite bug reported by Andreas König. Ignoring 
+           'perl' as a prereq.
+
 0.04  (2006/09/21)
       (ms) Added Algorithm::Dependency::Ordered as a dependency, fixing
            rt #21603, reported by Andreas König.

@@ -9,6 +9,9 @@ use strict;
 use Test::More qw(no_plan);
 BEGIN { use_ok('CPAN::Unwind') };
 
+#use Log::Log4perl qw(:easy);
+#Log::Log4perl->easy_init({layout => "%F{1}:%L %m%n", level => $DEBUG});
+
 use Cache::FileCache;
 use File::Temp qw(tempdir);
 
@@ -43,14 +46,16 @@ $agent = CPAN::Unwind->new(
     cache => $cache,
 );
     
-$resp = $agent->lookup("Algorithm::Bucketizer");
-ok($resp->is_success, "Algorithm::Bucketizer");
+my $wanted = "File::Basename";
+
+$resp = $agent->lookup("$wanted");
+ok($resp->is_success, "$wanted");
     
 $deps = $resp->dependent_versions();
     
-is(join('', keys %$deps), "", "Algorithm::Bucketizer dependencies (none)");
+is(join(' ', keys %$deps), "", "$wanted dependencies (none)");
 
 my @sched = $resp->schedule();
 
-is("@sched", "Algorithm::Bucketizer", "Algorithm::Bucketizer Schedule");
-
+  # Empty schedule, because File::Basename comes with perl core
+is("@sched", "", "$wanted Schedule");

@@ -24,6 +24,9 @@ use Cwd;
 our $VERSION = "0.04";
 our $TGZ     = "tar.tgz";
 
+  # These troublemakers are ignored when listed as a dependency
+our %BLACKLISTED = map { $_ => 1 } qw(perl);
+
 ###########################################
 sub new {
 ###########################################
@@ -130,7 +133,7 @@ sub lookup {
         $result->{dependents}->{$mname} = [];
 
         for(keys %$deps) {
-
+            DEBUG "Adding dependency $_";
             push @{$result->{dependents}->{$mname}}, $_;
 
             $unresolved{$_} = 1 unless exists $resolved{$_};
@@ -212,6 +215,8 @@ sub lookup_single {
 
         DEBUG "Found dependent_versions of $mname: ", Dumper($deps);
     };
+
+    delete $deps->{$_} for keys %BLACKLISTED;
 
     chdir $cwd or LOGDIE "Cannot chdir to $cwd";
 
@@ -358,7 +363,7 @@ sub item_select {
 #######################################
     my($self, $item) = @_;
 
-    DEBUG "Selecting $item";
+    LOGCARP "Selecting $item";
 
     push @{$self->{selected}}, $item;
 }
