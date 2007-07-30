@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl -w
 ######################################################################
-# cpan-unwind -- 2005, Mike Schilli <mschilli@yahoo-inc.com>
+# cpan-unwind -- 2005, Mike Schilli <m@perlmeister.com>
 ######################################################################
 use strict;
 
@@ -61,4 +61,4 @@ modify it under the same terms as Perl itself.
 
 =head1 AUTHOR
 
-2005, Mike Schilli <mschilli@yahoo-inc.com>
+2005, Mike Schilli <m@perlmeister.com>
