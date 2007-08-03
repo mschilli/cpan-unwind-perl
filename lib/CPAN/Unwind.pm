@@ -21,7 +21,7 @@ use Cache::FileCache;
 use Cache::Cache;
 use Cwd;
 
-our $VERSION = "0.05";
+our $VERSION = "0.06";
 our $TGZ     = "tar.tgz";
 
   # These troublemakers are ignored when listed as a dependency

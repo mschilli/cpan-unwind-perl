@@ -1,6 +1,9 @@
 ######################################################################
 Revision history for Perl extension CPAN::Unwind
 
+0.06  (not yet released)
+      (ms) Using LWP::UserAgent instead of LWP::Simple
+
 0.05  (2007/07/30)
       (ms) Fixed test suite bug reported by Andreas König. Ignoring 
            'perl' as a prereq.
