@@ -13,7 +13,7 @@ use File::Temp qw(tempfile tempdir);
 use Log::Log4perl qw(:easy);
 use Log::Log4perl::Util;
 use Data::Dumper;
-use LWP::Simple qw();
+use LWP::UserAgent;
 use Module::Depends::Intrusive;
 use Archive::Tar;
 use Storable qw(freeze thaw);
@@ -194,12 +194,20 @@ sub lookup_single {
 
     DEBUG "Created tempdir $tempdir";
 
-    my $rc = LWP::Simple::getstore($url, "$tempdir/$TGZ");
+    my $ua = LWP::UserAgent->new();
+    my $resp = $ua->get("$url");
 
-    return CPAN::Unwind::Response->new(
-               mname   => $mname,
-               message => "Fetching tarball $url failed") unless $rc;
-    
+    if($resp->is_error()) {
+        return CPAN::Unwind::Response->new(
+                   mname   => $mname,
+                   message => "Fetching tarball $url failed");
+    }
+
+    my $tgzfile = "$tempdir/$TGZ";
+    open FILE, ">$tgzfile" or LOGDIE "Can't open $tgzfile ($!)";
+    print FILE $resp->content();
+    close FILE;
+
     my $cwd = getcwd();
     chdir $tempdir or LOGDIE "Cannot chdir to $tempdir";
 
