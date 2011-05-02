@@ -1,5 +1,5 @@
 ######################################################################
-    CPAN::Unwind 0.05
+    CPAN::Unwind 0.06
 ######################################################################
 
 NAME
@@ -46,7 +46,7 @@ DESCRIPTION
     SECURITY NOTE: CPAN::Unwind runs all Makefile.PL files (via
     "Module::Depends::Intrusive") of modules it finds dependencies on. If
     you are concerned that any module in the dependency tree on CPAN isn't
-    trustworthy, don't use it.
+    trustworthy, only use it in a secured sandbox.
 
   METHODS
     CPAN::Unwind supports the following methods:
@@ -145,9 +145,9 @@ EXAMPLES
         XML::SAX XML::Simple Digest::MD5 LWP::UserAgent Net::Amazon
 
 LEGALESE
-    Copyright 2005 by Mike Schilli, all rights reserved. This program is
-    free software, you can redistribute it and/or modify it under the same
-    terms as Perl itself.
+    Copyright 2005-2011 by Mike Schilli, all rights reserved. This program
+    is free software, you can redistribute it and/or modify it under the
+    same terms as Perl itself.
 
 AUTHOR
     2005, Mike Schilli <cpan@perlmeister.com>

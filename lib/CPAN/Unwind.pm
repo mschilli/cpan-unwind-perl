@@ -449,7 +449,7 @@ runs L<Module::Depends::Intrusive> on them.
 SECURITY NOTE: L<CPAN::Unwind> runs all Makefile.PL files (via
 C<Module::Depends::Intrusive>) of modules it finds dependencies on. If
 you are concerned that any module in the dependency tree on CPAN isn't
-trustworthy, don't use it.
+trustworthy, only use it in a secured sandbox.
 
 =head2 METHODS
 
@@ -577,7 +577,7 @@ C<CPAN::Unwind> requires a valid CPAN configuration.
 
 =head1 LEGALESE
 
-Copyright 2005 by Mike Schilli, all rights reserved.
+Copyright 2005-2011 by Mike Schilli, all rights reserved.
 This program is free software, you can redistribute it and/or
 modify it under the same terms as Perl itself.
 

@@ -1,7 +1,7 @@
 ######################################################################
 Revision history for Perl extension CPAN::Unwind
 
-0.06  (not yet released)
+0.06  (2011/05/01)
       (ms) Using LWP::UserAgent instead of LWP::Simple
 
 0.05  (2007/07/30)
